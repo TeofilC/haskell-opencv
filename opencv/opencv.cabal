@@ -4,7 +4,6 @@ version:       0.0.2.1
 homepage:      https://github.com/LumiGuide/haskell-opencv
 bug-reports:   https://github.com/LumiGuide/haskell-opencv/issues
 license:       BSD-3-Clause
-license-file:  LICENSE
 author:        Roel van Dijk <roel@lambdacube.nl>, Bas van Dijk <v.dijk.bas@gmail.com>
 maintainer:    Roel van Dijk <roel@lambdacube.nl>, Bas van Dijk <v.dijk.bas@gmail.com>
 build-type:    Custom
@@ -63,7 +62,7 @@ library
         termcriteria.hpp
         video_motion_analysis.hpp
 
-    cxx-options: -std=c++11 -fpermissive 
+    cxx-options: -std=c++11
 
     if os(darwin)
       extra-libraries: c++
