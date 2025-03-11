@@ -198,11 +198,7 @@ newOrb OrbParams{..} = fromPtr
         , $(int32_t orb_edgeThreshold)
         , $(int32_t orb_firstLevel)
         , $(int32_t c'WTA_K)
-#ifdef OPENCV4
         , cv::ORB::ScoreType($(int32_t c'scoreType))
-#else
-        , $(int32_t c'scoreType)
-#endif
         , $(int32_t orb_patchSize)
         , $(int32_t orb_fastThreshold)
         );
@@ -227,7 +223,7 @@ orbDetectAndComputeImg
     :: forall (width    :: Nat)
               (height   :: Nat)
               (channels :: Nat)
-              (depth    :: *)
+              (depth    :: Type)
      . (Mat (ShapeT [height, width]) ('S channels) ('S depth) ~ Frog)
     => Mat (ShapeT [height, width]) ('S channels) ('S depth)
 orbDetectAndComputeImg = exceptError $ do
@@ -655,7 +651,7 @@ bfMatcherImg
               (width2   :: Nat)
               (height   :: Nat)
               (channels :: Nat)
-              (depth    :: *)
+              (depth    :: Type)
      . ( Mat (ShapeT [height, width]) ('S channels) ('S depth) ~ Frog
        , width2 ~ (*) width 2
        )
@@ -775,7 +771,7 @@ fbMatcherImg
               (width2   :: Nat)
               (height   :: Nat)
               (channels :: Nat)
-              (depth    :: *)
+              (depth    :: Type)
      . ( Mat (ShapeT [height, width]) ('S channels) ('S depth) ~ Frog
        , width2 ~ (*) width 2
        )
